@@ -12,7 +12,8 @@ export const meta = {
 const Rootlayout = ({children}) => {
   return (
     <html lang='en'>
-      <body>
+      <body className='bg-blac'>
+        <Provider>
         <div className='main'>
             <div  className='gradient'/>
         </div>
@@ -21,9 +22,10 @@ const Rootlayout = ({children}) => {
          <Nav />
             {children}
         </main>
+        </Provider>
       </body>
     </html>
   )
 }
 
-export default Rootlayout
+export default Rootlayout 

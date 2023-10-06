@@ -10,6 +10,7 @@ export default function Nav(params) {
 
     const isUserLogged = true
     const [providers, setProviders] = useState(null)
+    const [toggleDropdown, setToggleDropdown] = useState(false)
 
     useEffect(()=> {
       const setProviders = async () => {
@@ -85,8 +86,35 @@ export default function Nav(params) {
                            height={37}
                            className="rounded-full"
                            alt="profile"
-                           />
+                           onClick={()=> setToggleDropdown(prev => !prev)}/>
                         </button>
+
+                        {
+                            toggleDropdown && (
+                              <div className="dropdown">
+                                 <Link 
+                                 href='/profile'
+                                 className="dropdown_link"
+                                 onClick={()=> setToggleDropdown(false)}>
+                                   My Profile
+                                 </Link>
+
+                                 <Link 
+                                 href='/create-prompt'
+                                 className="dropdown_link"
+                                 onClick={()=> setToggleDropdown(false)}>
+                                   Create prompts
+                                 </Link>
+                                 <button 
+                                 type="button"
+                                 onClick={()=> {setToggleDropdown(false)
+                                 signOut}}
+                                 className="rounded-lg">
+                                    sign out
+                                 </button>
+                              </div>  
+                            )
+                        }
                     </div>
                 ) : (
                     <>
